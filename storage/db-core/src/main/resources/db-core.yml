@@ -1,0 +1,148 @@
+spring:
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate.default_batch_fetch_size: 100
+
+---
+spring.config.activate.on-profile: local
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+  h2:
+    console:
+      enabled: true
+
+teseus:
+  datasource:
+    skeleton:
+      driver-class-name: org.h2.Driver
+      jdbc-url: jdbc:h2:mem:skeleton;MODE=MySQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+      username: sa
+      pool-name: skeleton-pool
+      data-source-properties:
+        rewriteBatchedStatements: true
+
+---
+spring.config.activate.on-profile: local-dev
+
+spring:
+  jpa:
+    properties:
+      hibernate:
+        show_log: true
+        format_sql: true
+    show-sql: true
+
+teseus:
+  datasource:
+    skeleton:
+      driver-class-name: org.mariadb.jdbc.Driver
+      jdbc-url: jdbc:mysql:aurora://${teseus.database.skeleton-main.url}
+      username: ${teseus.database.skeleton-main.username}
+      password: ${teseus.database.skeleton-main.password}
+      maximum-pool-size: 5
+      connection-timeout: 1000
+      max-lifetime: 600000
+      pool-name: skeleton-pool
+      data-source-properties:
+        socketTimeout: 3000
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+        useLocalSessionState: true
+        rewriteBatchedStatements: true
+        cacheResultSetMetadata: true
+        cacheServerConfiguration: true
+        elideSetAutoCommits: true
+        maintainTimeStats: false
+
+---
+spring.config.activate.on-profile: dev
+
+teseus:
+  datasource:
+    skeleton:
+      driver-class-name: org.mariadb.jdbc.Driver
+      jdbc-url: jdbc:mysql:aurora://${teseus.database.skeleton-main.url}
+      username: ${teseus.database.skeleton-main.username}
+      password: ${teseus.database.skeleton-main.password}
+      maximum-pool-size: 10
+      connection-timeout: 1000
+      max-lifetime: 600000
+      pool-name: skeleton-pool
+      data-source-properties:
+        socketTimeout: 3000
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+        useLocalSessionState: true
+        rewriteBatchedStatements: true
+        cacheResultSetMetadata: true
+        cacheServerConfiguration: true
+        elideSetAutoCommits: true
+        maintainTimeStats: false
+
+---
+spring.config.activate.on-profile: staging
+
+teseus:
+  datasource:
+    skeleton:
+      driver-class-name: org.mariadb.jdbc.Driver
+      jdbc-url: jdbc:mysql:aurora://${teseus.database.skeleton-main.url}
+      username: ${teseus.database.skeleton-main.username}
+      password: ${teseus.database.skeleton-main.password}
+      maximum-pool-size: 30
+      connection-timeout: 1000
+      max-lifetime: 600000
+      pool-name: skeleton-pool
+      data-source-properties:
+        socketTimeout: 3000
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+        useLocalSessionState: true
+        rewriteBatchedStatements: true
+        cacheResultSetMetadata: true
+        cacheServerConfiguration: true
+        elideSetAutoCommits: true
+        maintainTimeStats: false
+
+---
+spring.config.activate.on-profile: live
+
+teseus:
+  datasource:
+    skeleton:
+      driver-class-name: org.mariadb.jdbc.Driver
+      jdbc-url: jdbc:mysql:aurora://${teseus.database.skeleton-main.url}
+      username: ${teseus.database.skeleton-main.username}
+      password: ${teseus.database.skeleton-main.password}
+      maximum-pool-size: 50
+      connection-timeout: 1000
+      max-lifetime: 600000
+      pool-name: skeleton-pool
+      data-source-properties:
+        socketTimeout: 3000
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+        useLocalSessionState: true
+        rewriteBatchedStatements: true
+        cacheResultSetMetadata: true
+        cacheServerConfiguration: true
+        elideSetAutoCommits: true
+        maintainTimeStats: false

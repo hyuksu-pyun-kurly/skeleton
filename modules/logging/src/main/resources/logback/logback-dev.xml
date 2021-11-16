@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="com/teseus/common/logkafka/logback.xml"/>
+
+    <logger name="org.springframework" level="WARN"/>
+    <logger name="com.teseus" level="DEBUG"/>
+
+    <appender name="sentryAppender" class="io.sentry.logback.SentryAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>WARN</level>
+        </filter>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="asyncKafkaAppender"/>
+        <appender-ref ref="sentryAppender"/>
+    </root>
+</configuration>

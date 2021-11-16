@@ -1,0 +1,11 @@
+spring:
+  sleuth:
+    trace-id128: true
+    sampler:
+      probability: 1.0
+
+logging.config: classpath:logback/logback-${spring.profiles.active}.xml
+
+server.log.servlet-access.enabled: true
+server.tracing.propagation.feign.enabled: true
+server.tracing.propagation.rest-template.enabled: true

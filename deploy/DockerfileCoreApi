@@ -1,0 +1,10 @@
+FROM 840744902195.dkr.ecr.ap-northeast-2.amazonaws.com/openjdk:11.0.3-jdk-slim
+
+ARG VERSION=0.0.1-SNAPSHOT
+ENV VERSION=${VERSION}
+
+RUN mkdir -p /teseus/service/skeleton
+COPY skeleton-core-api/build/libs/skeleton-core-api-${VERSION}.jar   /teseus/service/skeleton/skeleton-core-api-${VERSION}.jar
+COPY deploy/entrypointCoreApi.sh                      /teseus/service/skeleton/entrypointCoreApi.sh
+
+CMD ["/teseus/service/skeleton/entrypointCoreApi.sh"]

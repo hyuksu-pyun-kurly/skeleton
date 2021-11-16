@@ -1,0 +1,49 @@
+= API Docs
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 3
+:sectlinks:
+:snippets: build/generated-snippets
+
+== 소개
+
+boilerplate API 문서입니다
+
+== 공통 사항
+
+
+== Test API
+
+=== Test With Body
+
+==== Request
+include::{snippets}/test-with-body/curl-request.adoc[]
+
+==== Request Fields
+include::{snippets}/test-with-body/request-fields.adoc[]
+
+==== Response
+include::{snippets}/test-with-body/http-response.adoc[]
+
+==== Response Fields
+include::{snippets}/test-with-body/response-fields.adoc[]
+
+'''
+
+=== Test With Parameter
+
+==== Request
+include::{snippets}/test-with-parameter/curl-request.adoc[]
+
+==== Path Parameters
+include::{snippets}/test-with-parameter/path-parameters.adoc[]
+
+==== Response
+include::{snippets}/test-with-parameter/http-response.adoc[]
+
+==== Response Fields
+include::{snippets}/test-with-parameter/response-fields.adoc[]
+
+

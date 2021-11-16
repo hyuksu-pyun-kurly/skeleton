@@ -1,0 +1,8 @@
+FROM 840744902195.dkr.ecr.ap-northeast-2.amazonaws.com/openjdk:11.0.3-jdk-slim
+
+ARG VERSION=0.0.1-SNAPSHOT
+ENV VERSION=${VERSION}
+
+RUN mkdir -p /teseus/service/skeleton
+COPY skeleton-batch/build/libs/skeleton-batch-${VERSION}.jar   /teseus/service/skeleton/skeleton-batch-${VERSION}.jar
+COPY deploy/entrypointBatch.sh                      /teseus/service/skeleton/entrypointBatch.sh

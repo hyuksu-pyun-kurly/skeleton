@@ -1,0 +1,30 @@
+spring.application.name: skeleton-batch
+spring.profiles.active: local
+
+spring:
+  config:
+    import:
+      - monitoring.yml
+      - logging.yml
+      - db-core.yml
+      - kms.yml
+  batch:
+    job:
+      names: NONE
+
+---
+spring.config.activate.on-profile: local
+
+---
+spring.config.activate.on-profile: local-dev
+
+
+---
+spring.config.activate.on-profile: dev
+
+
+---
+spring.config.activate.on-profile:
+  - staging
+  - live
+
